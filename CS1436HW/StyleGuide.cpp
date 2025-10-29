@@ -18,7 +18,7 @@ int main()
     string sentence = "just some words im sure";
 
     //Break up complex statements like this, with increasing indentation
-    //Also have a commet on the math in complex equations
+    //Also have a comet on the math in complex equations
     x = (sqrt(y) * pow(z,2) + x)
         * 2 * (sqrt(y) * pow(z,2) + x)
             / 3 * (sqrt(y) * pow(z,2) + x);
@@ -31,15 +31,15 @@ int main()
     cin >> sentence;
 
     if (0 > 1) 
-        {
+    {
         //Some code that does some stuff
     } 
-        else if (1 < 0) 
-            {
+    else if (1 < 0) 
+    {
         //Some code that does some other stuff
-        } 
+    } 
     else 
-        {
+    {
         //Some code that does some more other stuff
     }
     
@@ -52,7 +52,8 @@ int main()
 int meaningfullName(int param) 
 {
     int value;
-
+    
+    value += param;
     //Avoid using multiple return statements
     return value + param;
 
