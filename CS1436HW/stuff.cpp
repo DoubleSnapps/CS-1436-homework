@@ -8,12 +8,9 @@ using namespace std;
 int main()
 {
 
-    int i =240;
-    do
-    {
-        cout << i % 10;
-        i /= 10;
-    } while ((i = 10));
+    int i =16;
+    cout << (28 % i) << endl;
+    cout << (16 % i);cout << ( 1% i);cout << ( 5% i);
     
 
 }
