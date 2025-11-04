@@ -8,20 +8,12 @@ using namespace std;
 int main()
 {
 
-    int i=0, strLen;
-    string str;
-
-    cout << "enter string";
-    getline(cin,str);
-    cout << endl;
-
-    strLen = str.length();
-
-    while(i<strLen)
+    int i =240;
+    do
     {
-        cout << str.at(i++) << endl;
-    }
+        cout << i % 10;
+        i /= 10;
+    } while ((i = 10));
     
-    cout << "over";
 
 }
