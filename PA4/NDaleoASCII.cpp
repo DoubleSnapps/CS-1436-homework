@@ -1,23 +1,24 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
 int main()
 {
 
-    int i = 0;
+    int i = 0, newlineIteration = 1;
 
-    while(i < 127)
+    while (i < 127)
     {
-        do
+        cout << static_cast<char>(i);
+        i++;
+
+        if(i == 16 *  newlineIteration)
         {
-            // cout << " hello " << i << endl;
-            cout << static_cast<char>(i) << " ";
-            i++;
+            cout << endl; 
+            newlineIteration++;
         }
-        while((static_cast<double>(i)/16) != 1);
-        if((static_cast<double>(i)/16) != 1){cout << endl;}
     }
 
+    return 0;
 
 }

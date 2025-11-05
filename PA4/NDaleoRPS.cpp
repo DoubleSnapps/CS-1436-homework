@@ -39,7 +39,9 @@ int main()
         // If not tied, print win or loss, if tied, play again
         cout << ((!tied) ? (playerWin ? "You Win!" : "The Computer Wins!") : "You are tied, Play again!"); 
     }
-    while (1);
+    while (tied);
+
+    return 0;
 
 }
 
@@ -54,7 +56,6 @@ int generateRPSChoice()
     srand(time(0));
 
     computerMove = (rand() % 3) + 1;
-    cout << "Com move" << computerMove << endl;
 
     return computerMove;
 }

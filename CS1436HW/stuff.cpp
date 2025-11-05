@@ -9,8 +9,6 @@ int main()
 {
 
     int i =16;
-    cout << (28 % i) << endl;
-    cout << (16 % i);cout << ( 1% i);cout << ( 5% i);
-    
+    for(i=0;i<=100;i++){cout<<(i*10)<<endl;}
 
 }
