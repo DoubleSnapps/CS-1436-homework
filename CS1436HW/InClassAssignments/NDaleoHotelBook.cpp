@@ -30,17 +30,14 @@ int main()
 }
 
 /*  This function preforms the primary looping
-    menu operations for the hotel simulation.
-    Requires: occupied rooms (int)
-    Requires: vacant rooms (int)
-    Returns: occupied and vacant rooms as pass by refs. (int, int)  */
+    menu operations for the hotel simulation.   */
 void menuManager()
 {
     int occupied = 0, vacant = 0, floorNumber;
     char action;
-    bool validAction = true, contLoop = true;
+    bool contLoop = true;
 
-    // primary do-while loop that executes until user enters x to end
+    // primary do-while loop that executes until user enters 'x'
     do
     {
 
@@ -50,7 +47,6 @@ void menuManager()
 
         if (action == 'r' || action == 'R')
         {
-            cout << "hello";
             reportOccupancy(occupied, vacant);
         }
         else if (action == 'x' || action == 'X')
@@ -60,12 +56,13 @@ void menuManager()
         else
         {
             /* At this point, action is either '1', '2' or '3',
-                so we just subtract the ASCII code by 48 to get 1, 2, or 3    */
+                so we just subtract the ASCII code by 48 ('0') to get 1, 2, or 3    */
             floorNumber = action - 48;
 
             getRoomStatus(floorNumber, occupied, vacant);
         }
-    } while (contLoop);
+    }
+    while (contLoop);
 }
 
 /*  This function gets a menu action from the
@@ -84,7 +81,8 @@ char getAction()
 
         validAction = validateAction(action);
 
-    } while (!validAction);
+    } 
+    while (!validAction);
 
     return action;
 }
@@ -111,13 +109,9 @@ void reportOccupancy(int occupied, int vacant)
     char ch;
     double occupancyPercentage, rooms;
 
-    cout << endl << "debugging vacant" << vacant << " occupied" << occupied; 
-
     rooms = occupied + vacant;
 
-    cout << endl << "debugging rooms" << rooms;
-    cout << endl << "debugging vacant" << vacant << " occupied" << occupied; 
-
+    // part divided by whole times 100
     occupancyPercentage = (occupied / rooms) * 100;
 
     cout << endl << endl << fixed << setprecision(2);
