@@ -9,6 +9,9 @@ int main()
 {
 
     // the entered arguments are evaluated to be prime numbers or not
+    // 2, 3, 5, 11, 457, and 997 are all prime numbers
+    // 1, 4, 8, 24, and 346 are not prime numbers
+    // while 1 is divisible by 1 and itself, it only has 1 divisor, not 2, so it is not prime 
     printPrime(1);
     printPrime(2);
     printPrime(3);
@@ -54,6 +57,7 @@ bool isPrime(int num)
     int i = 1, divisors = 0;
     bool divisible, prime;
 
+    // divide with integers until i > num
     while (i <= num)
     {
         // if num/i gives no remainder, i is a factor of num

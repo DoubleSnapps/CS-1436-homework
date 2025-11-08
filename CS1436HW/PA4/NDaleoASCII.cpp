@@ -9,10 +9,11 @@ int main()
 
     while (i < 127)
     {
-        cout << static_cast<char>(i);
+        // ASCII characters from 1-31 are not printable
+        if(i > 31) cout << static_cast<char>(i);
         i++;
 
-        if(i == 16 *  newlineIteration)
+        if(i == (16 * newlineIteration))
         {
             cout << endl; 
             newlineIteration++;
