@@ -1,3 +1,7 @@
+/*  This program determines whether numbers are prime.
+    No Inputs are taken. An ouput of a variety of number's
+    prime statuses is output to demonstrate the function.   */
+
 #include <iostream>
 
 using namespace std;
@@ -28,9 +32,8 @@ int main()
 
 }
 
-/*  This program prints 
-    if a number is prime
-    or not.
+/*  This program prints if
+    a number is prime or not.
     Requires: number (int)  */
 void printPrime(int num)
 {

@@ -1,3 +1,9 @@
+/*  This program tracks the growth of a town's population
+    from 1900 to 2000. It takes a user input of population
+    from 1900-2000 6 times, each increasing the year by 20
+     years (1900-1920-...-2000). It outputs the population
+    of the town, using asterisk to denote each 1k people.   */
+
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -28,7 +34,7 @@ int getValidPopulation(int &pop1900, int &pop1920, int &pop1940,
     bool validPopulation = true;
 
     cout << "Enter Prairieville's population for each year." << endl;
-    cout << "(Population must be greater than 1000 people)" << endl;
+    cout << "\t(Population must be greater than 1000 people)" << endl;
 
     while (i < 6)
     {
@@ -43,6 +49,8 @@ int getValidPopulation(int &pop1900, int &pop1920, int &pop1940,
 
             validPopulation = (population > 1000);
         } while (!validPopulation);
+
+        // the poor mans arrays
 
         pop1900 = (i == 0) ? population : pop1900;
         pop1920 = (i == 1) ? population : pop1920;
