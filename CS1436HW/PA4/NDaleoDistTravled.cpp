@@ -8,13 +8,15 @@ int main()
     double speed, distance;
     int i = 1, time;
 
-    cout << "Enter speed of vehicle: " << endl;
+    cout << "Enter speed of vehicle (mph): " << endl;
     cin >> speed;
+
     cout << "Enter hours traveled: " << endl;
     cin >> time;
+
     if (speed >= 0 && !(time < 1))
     {
-        cout << "Hour-distance traveled" << endl;
+        cout << "Miles traveled by Hour" << endl;
         cout << "------------------" << endl;
         while (i <= time)
         {
@@ -25,7 +27,7 @@ int main()
     }
     else
     {
-        cout << "Invalid values entered" << endl;
+        cout << "Invalid values entered; Try again" << endl;
     }
 
     return 0;

@@ -22,7 +22,7 @@ int main()
 {
     string result = "tie";
     int playerMove, computerMove;
-    bool playerWin = false, tied = false;
+    bool userWin = false, tied = false;
 
     do
     {
@@ -30,14 +30,15 @@ int main()
 
         playerMove = getRPSChoice();
 
-        result = battleRPS(playerMove, computerMove, playerWin);
+        result = battleRPS(playerMove, computerMove, userWin);
 
         tied = (result == "tie");
 
+        // If not tied, print the "battle", if tied, print nothing
         cout << (!tied ? (result + "\n") : "");
 
-        // If not tied, print win or loss, if tied, play again
-        cout << ((!tied) ? (playerWin ? "You Win!" : "The Computer Wins!") : "You are tied, Play again!"); 
+        // If not tied, print user's win or loss, if tied, play again
+        cout << ((!tied) ? (userWin ? "You Win!" : "The Computer Wins!") : "You are tied, Play again!"); 
     }
     while (tied);
 
@@ -143,11 +144,11 @@ int convertCharMove(char playerMove)
     Requires: player two's choice (int)
     Requires: player win variable (bool, pass by reference)
     Returns: string of match outcome (string), playerWin pass by ref (bool) */
-string battleRPS(int p1Choice, int p2choice, bool &playerWin)
+string battleRPS(int p1Choice, int p2choice, bool &player2Win)
 {
 
     string result = "";
-    playerWin = false;
+    player2Win = false;
 
     if (p1Choice == p2choice)
     {
@@ -156,32 +157,32 @@ string battleRPS(int p1Choice, int p2choice, bool &playerWin)
     else if (p1Choice == 1 && p2choice == 2)
     {
         result = "Paper wraps rock!";
-        playerWin = false;
+        player2Win = false;
     }
     else if (p1Choice == 1 && p2choice == 3)
     {
         result = "Rock smashes scissors!";
-        playerWin = true;
+        player2Win = true;
     }
     else if (p1Choice == 2 && p2choice == 1)
     {
         result = "Paper wraps rock!";
-        playerWin = true;
+        player2Win = true;
     }
     else if (p1Choice == 2 && p2choice == 3)
     {
         result = "Scissors cuts paper!";
-        playerWin = false;
+        player2Win = false;
     }
     else if (p1Choice == 3 && p2choice == 1)
     {
         result = "Rock smashes scissors!";
-        playerWin = false;
+        player2Win = false;
     }
     else if (p1Choice == 3 && p2choice == 2)
     {
         result = "Scissors cuts paper!";
-        playerWin = true;
+        player2Win = true;
     }
 
     return result;

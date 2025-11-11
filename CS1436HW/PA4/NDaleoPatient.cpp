@@ -1,4 +1,9 @@
-/*  This program calculates a user's hospital bill. It takes an input of the user's patient type (in-patient or out-patient), medication and services cost, and days spent and daily rate of stay if the patient answers in patient. It outputs the users bill for the hospital.    */
+/*  This program calculates a user's hospital bill. 
+    It takes an input of the user's patient type 
+    (in-patient or out-patient), medication and 
+    services cost, and days spent and daily rate 
+    of stay if the patient answers in patient. 
+    It outputs the users bill for the hospital.    */
 
 #include <iostream>
 #include <string>
@@ -15,8 +20,8 @@ int main()
 {
     int days;
     double hospitalBill, dailyRate, medication, services;
-    string daysMsg = "Enter days spent in hospital: ", rateMsg = "Enter daily cost: ",
-           medicationMsg = "Enter cost of medication(s): ", servicesMsg = "Enter cost of services: ";
+    string daysMsg = "Enter days spent in hospital: ", rateMsg = "Enter daily cost ($): ",
+           medicationMsg = "Enter cost of medication(s) ($): ", servicesMsg = "Enter cost of services ($): ";
     bool isInPatient;
 
     //----------------User Prompts----------------

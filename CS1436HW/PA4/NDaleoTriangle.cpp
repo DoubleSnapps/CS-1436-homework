@@ -1,15 +1,20 @@
+/*  This program uses for loops to output an 
+    asterisk triangle. No inputs are taken. 
+    The program outputs the first half, then 
+    the second half of the triangle.   */
+
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-    int i = 0, j = 0;
+    int i, j;
 
-    while (i < 10)
+    // runs 10 times
+    for (i = 0; i <= 10; i++)
     {
-        i++;
-
+        // prints j amount of *s, increasing with i
         for (j = 0; j < i; j++)
         {
             cout << "*";
@@ -17,20 +22,18 @@ int main()
         cout << endl;
     }
 
-    i = 0;
-
-    while (i < 10)
+    // runs 10 times
+   for (i = 0; i < 10; i++)
     {
 
+        // prints j amount of *s, decreasing with i
         for (j = 10; j > i; j--)
         {
             cout << "*";
         }
         cout << endl;
 
-        i++;
     }
 
     return 0;
-
 }
