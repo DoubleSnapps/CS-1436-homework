@@ -1,3 +1,12 @@
+/*  This program finds the distance a car 
+    traveled in a span of hours, for each 
+    hour, when given hours traveled and 
+    average speed. It takes an input of 
+    hours traveled and average vehicle 
+    speed from the user. It then outputs 
+    the distance traveled for each hour 
+    in the total amount of hours.   */
+
 #include <iostream>
 
 using namespace std;

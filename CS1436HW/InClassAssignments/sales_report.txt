@@ -1,0 +1,3 @@
+Item Name	Price Per Unit	Quantity Sold	Sale Quality
+aplle $           3546           Good Sale!    
+orange$           235231            Good Sale!    

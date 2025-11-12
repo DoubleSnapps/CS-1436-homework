@@ -11,7 +11,7 @@
 
 using namespace std;
 
-double getIntInput(string);
+int getIntInput(string);
 void reportRainfall(int, double);
 double getMonthlyRainfall(double&, string);
 string getMonthName(int);
@@ -19,7 +19,7 @@ string getMonthName(int);
 int main()
 {
 
-    int years, i = 0, months;
+    int years, i = 0, j, months;
     double cumulativeRainfall = 0;
     string yearsMsg = "Enter period of Years: \n\tMust be >= 1\n", currentMonth;
 
@@ -28,11 +28,13 @@ int main()
     // total months is just 12 times total years
     months = years * 12;
 
+    // runs once per year
     while (i < years)
     {
         cout << endl << "Year " << (i + 1) << endl;
 
-        for (int j = 1; j <= 12; j++)
+        // runs 12 times per year, or once per month
+        for (j = 1; j <= 12; j++)
         {
             currentMonth = getMonthName(j);
 
@@ -64,7 +66,7 @@ void reportRainfall(int months, double cumulativeRainfall)
     until a valid (>=1) value is entered.
     Requires: prompt for user (string)
     Returns: user entered value (double)  */
-double getIntInput(string msg)
+int getIntInput(string msg)
 {
 
     int value = 0;
@@ -78,7 +80,8 @@ double getIntInput(string msg)
 
         validValue = !(value < 1);
 
-    } while (!validValue);
+    }
+    while (!validValue);
 
     return value;
 }
@@ -103,9 +106,11 @@ double getMonthlyRainfall(double &cumulativeRainfall, string month)
         cout << "\tMust be >= 0" << endl;
         cin >> monthlyRain;
 
+        // runs while rain is invalid, when rainfall is negative 
         validRain = (monthlyRain >= 0);
 
-    } while (!validRain);
+    } 
+    while (!validRain);
 
     cumulativeRainfall += monthlyRain;
 
