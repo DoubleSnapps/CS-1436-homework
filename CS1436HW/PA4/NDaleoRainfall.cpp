@@ -29,7 +29,7 @@ int main()
     months = years * 12;
 
     // runs once per year
-    while (i < years)
+    for(i = 0; i < years; i++)
     {
         cout << endl << "Year " << (i + 1) << endl;
 
@@ -41,7 +41,7 @@ int main()
             getMonthlyRainfall(cumulativeRainfall, currentMonth);
         }
 
-        i++;  
+        
     }
 
     reportRainfall(months, cumulativeRainfall);
@@ -59,6 +59,7 @@ void reportRainfall(int months, double cumulativeRainfall)
     cout << "Over a period of " << months << " months:" << endl;
     cout << "\t" << cumulativeRainfall << " Inches of Rain fell." << endl;
     cout << "\tAveraging " << averageRainfall << " Inches of rain per month." << endl;
+
 }
 
 /*  This function gets a non-negative
@@ -99,10 +100,11 @@ double getMonthlyRainfall(double &cumulativeRainfall, string month)
 
     double monthlyRain = 0;
     bool validRain = true;
+
     do
     {
         cout << (validRain ? "" : "Invalid Value Entered; Try again\n");
-        cout << "Enter total of " << month << "'s rainfall in inches: " << endl;
+        cout << "Enter " << month << "'s total rainfall in inches: " << endl;
         cout << "\tMust be >= 0" << endl;
         cin >> monthlyRain;
 

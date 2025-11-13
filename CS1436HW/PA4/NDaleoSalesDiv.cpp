@@ -23,6 +23,8 @@ int main()
 
     double nwSalesFig, swSalesFig, seSalesFig, neSalesFig;
     
+    //----------------User Prompt----------------
+
     nwSalesFig = getSales(NORTHWEST);
     swSalesFig = getSales(SOUTHWEST);
     seSalesFig = getSales(SOUTHEAST);
@@ -52,7 +54,8 @@ double getSales(string division)
 
         validSalesFig = (salesFig >= 0);
 
-    } while (!validSalesFig);
+    } 
+    while (!validSalesFig);
 
     return salesFig;
 }
@@ -93,4 +96,5 @@ void findHighest(double nwSalesFig, double swSalesFig,
     cout << highestRegion << " had the highest sales figure at $" << highestSalesFig;
 
     cout << endl;
+
 }

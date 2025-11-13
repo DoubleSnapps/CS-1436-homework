@@ -67,6 +67,7 @@ void getValidPopulation(int &pop1900, int &pop1920, int &pop1940,
 
         // the poor mans arrays
 
+        // population only changes if the loop is currently asking for said year's population
         pop1900 = (i == 0) ? population : pop1900;
         pop1920 = (i == 1) ? population : pop1920;
         pop1940 = (i == 2) ? population : pop1940;
@@ -92,6 +93,7 @@ void printPopulationAsterisk(int year, int population)
     // population is divided by 1000
     population = round(population / 1000.0);
 
+    // print one * per population
     for (i = 0; i < population; i++)
     {
         cout << "*";

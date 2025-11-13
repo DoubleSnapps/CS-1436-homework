@@ -11,6 +11,8 @@ int main()
 {
     int i, j;
 
+    //----------------First Half----------------
+    
     // runs 10 times
     for (i = 0; i <= 10; i++)
     {
@@ -21,6 +23,8 @@ int main()
         }
         cout << endl;
     }
+
+    //----------------Second Half----------------
 
     // runs 10 times
    for (i = 0; i < 10; i++)

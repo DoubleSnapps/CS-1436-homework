@@ -1,8 +1,8 @@
-/*  This program calculates a user's hospital bill. 
-    It takes an input of the user's patient type 
-    (in-patient or out-patient), medication and 
-    services cost, and days spent and daily rate 
-    of stay if the patient answers in patient. 
+/*  This program calculates a user's hospital bill.
+    It takes an input of the user's patient type
+    (in-patient or out-patient), medication and
+    services cost, and days spent and daily rate
+    of stay if the patient answers in patient.
     It outputs the users bill for the hospital.    */
 
 #include <iostream>
@@ -20,7 +20,7 @@ int main()
 {
     int days;
     double hospitalBill, dailyRate, medication, services;
-    string daysMsg = "Enter days spent in hospital: ", rateMsg = "Enter daily cost ($): ",
+    string daysMsg = "Enter days spent in hospital (#): ", rateMsg = "Enter daily cost ($): ",
            medicationMsg = "Enter cost of medication(s) ($): ", servicesMsg = "Enter cost of services ($): ";
     bool isInPatient;
 
@@ -40,23 +40,23 @@ int main()
     //----------------Bill Calculation----------------
 
     // if inpatient, call calculateBill() with 4 arguments, if not, call with 2
-    hospitalBill = (isInPatient ? 
-        calculateBill(days, dailyRate, medication, services) :
+    hospitalBill = (isInPatient ? calculateBill(days, dailyRate, medication, services) :
         calculateBill(medication, services));
 
     //----------------Bill Output----------------
 
     cout << fixed << setprecision(2);
-    cout << "Hospital Bill $" << hospitalBill << "." << endl;
+    cout << "Hospital Bill: $" << hospitalBill << "." << endl;
 
     return 0;
+    
 }
 
 /*  This function asks the user
     where they are an In or Out
     patient. It loops until the
     user enters i or o (case insensitive)
-    Returns: true if in patient, false if out (boo.)    */
+    Returns: true if in patient, false if out (bool)    */
 bool getPatientType()
 {
     char patient;
@@ -73,7 +73,8 @@ bool getPatientType()
         // we love case insensitivity
         validAnswer = (patient == 'i' || patient == 'o' || patient == 'I' || patient == 'O');
 
-    } while (!validAnswer);
+    } 
+    while (!validAnswer);
 
     return (patient == 'i' || patient == 'I');
 }
@@ -97,14 +98,15 @@ double getDoubleInput(string msg)
 
         validValue = (value >= 0);
 
-    } while (!validValue);
+    } 
+    while (!validValue);
 
     return value;
+
 }
 
-/*  This function calculates the 
-    total bill the user owes
-    a hospital.
+/*  This function calculates the total
+    bill the user owes the hospital.
     Requires: cost of medication (double)
     Requires: cost of services (double)
     Returns: bill cost (double) */
@@ -117,11 +119,11 @@ double calculateBill(double medication, double services)
     totalBill = medication + services;
 
     return totalBill;
+
 }
 
-/*  This function calculates the 
-    total bill the user owes
-    a hospital. 
+/*  This function calculates the total
+    bill the user owes the hospital.
     Requires: days spent in hospital (int)
     Requires: daily rate of stay (double)
     Requires: cost of medication (double)
@@ -138,4 +140,5 @@ double calculateBill(int days, double dailyRate,
     totalBill = (days * dailyRate) + medication + services;
 
     return totalBill;
+
 }

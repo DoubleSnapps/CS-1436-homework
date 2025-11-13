@@ -1,6 +1,7 @@
 /*  This program determines whether numbers are prime.
-    No Inputs are taken. An ouput of a variety of number's
-    prime statuses is output to demonstrate the function.   */
+    No Inputs are taken. The program outputs a variety 
+    of number's prime statuses is output to demonstrate 
+    the function/program.   */
 
 #include <iostream>
 
@@ -43,12 +44,11 @@ void printPrime(int num)
 
     cout << num << " is ";
 
-    if (!prime)
-    {
-        cout << "not ";
-    }
+    // not is only printed if the number is not prime
+    cout <<  (!prime ? "not " : "");
 
     cout << "a prime number." << endl;
+    
 }
 
 /*  This function determines if a number is prime or not.

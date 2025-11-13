@@ -26,19 +26,28 @@ int main()
 
     do
     {
+
+        //----------------Com Move----------------
+
         computerMove = generateRPSChoice();
 
+        //----------------User Move----------------
+
         playerMove = getRPSChoice();
+
+        //----------------Result Calculation----------------
 
         result = battleRPS(playerMove, computerMove, userWin);
 
         tied = (result == "tie");
 
+        //----------------Result Output----------------
+
         // If not tied, print the "battle", if tied, print nothing
         cout << (!tied ? (result + "\n") : "");
 
         // If not tied, print user's win or loss, if tied, play again
-        cout << ((!tied) ? (userWin ? "You Win!" : "The Computer Wins!") : "You are tied, Play again!"); 
+        cout << ((!tied) ? (userWin ? "You Win!" : "The Computer Wins!") : "You are tied, Play again!\n"); 
     }
     while (tied);
 
@@ -46,25 +55,24 @@ int main()
 
 }
 
-/*  This function generates 
-    rock, paper, or scissors.
-    Returns: 1 (rock), 2 (paper), 
-        or 3 (scissors) (int)   */
+/*  This function generates rock, paper, or scissors.
+    Returns: 1 (rock), 2 (paper), or 3 (scissors) (int)   */
 int generateRPSChoice()
 {
     int computerMove;
 
     srand(time(0));
 
+    // restrict to [0-2] then shift one
     computerMove = (rand() % 3) + 1;
 
     return computerMove;
+
 }
 
 /*  This function gets a user choice 
     of rock, paper, or scissors.
-    Returns: 1 (rock), 2 (paper), 
-        or 3 (scissors) (int)   */
+    Returns: 1 (rock), 2 (paper), or 3 (scissors) (int)   */
 int getRPSChoice()
 {
     char playerMove;
@@ -72,7 +80,7 @@ int getRPSChoice()
     bool selectedMove = false;
 
     // runs while selected move is invalid
-    while (!selectedMove)
+    do
     {
         cout << "Choose corresponding character for Rock, Paper, or Scissors." << endl;
         cout << "\tRock: r" << endl;
@@ -82,10 +90,13 @@ int getRPSChoice()
 
         selectedMove = validatePlayerMove(playerMove);
     }
+    // run while user has not selected a move
+    while(!selectedMove);
 
     playerMoveNum = convertCharMove(playerMove);
 
     return playerMoveNum;
+
 }
 
 /*  This function checks if the 
@@ -144,46 +155,61 @@ int convertCharMove(char playerMove)
     Requires: player two's choice (int)
     Requires: player win variable (bool, pass by reference)
     Returns: string of match outcome (string), playerWin pass by ref (bool) */
-string battleRPS(int p1Choice, int p2choice, bool &player2Win)
+string battleRPS(int p1Choice, int p2choice, bool &player1Win)
 {
 
     string result = "";
-    player2Win = false;
+    player1Win = false;
+
+    //p1 is user, p2 is com
 
     if (p1Choice == p2choice)
     {
         result = "tie";
     }
+
+    // user rock, com paper; com win
     else if (p1Choice == 1 && p2choice == 2)
     {
         result = "Paper wraps rock!";
-        player2Win = false;
+        player1Win = false;
     }
+
+    // user rock, com scissors; user win
     else if (p1Choice == 1 && p2choice == 3)
     {
         result = "Rock smashes scissors!";
-        player2Win = true;
+        player1Win = true;
     }
+
+    // user paper, com rock; user win
     else if (p1Choice == 2 && p2choice == 1)
     {
         result = "Paper wraps rock!";
-        player2Win = true;
+        player1Win = true;
     }
+    
+    // user paper, com scissors; com win
     else if (p1Choice == 2 && p2choice == 3)
     {
         result = "Scissors cuts paper!";
-        player2Win = false;
+        player1Win = false;
     }
+
+    // user scissors, com rock; com win
     else if (p1Choice == 3 && p2choice == 1)
     {
         result = "Rock smashes scissors!";
-        player2Win = false;
+        player1Win = false;
     }
+
+    // user scissors, com paper; user win
     else if (p1Choice == 3 && p2choice == 2)
     {
         result = "Scissors cuts paper!";
-        player2Win = true;
+        player1Win = true;
     }
 
     return result;
+
 }
