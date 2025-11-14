@@ -1,3 +1,9 @@
+/*  This function saves the history of sales to a file.
+    It takes an input of item name, price, and amount 
+    sold from the user. There is also an input to
+    continue entering items. The function outputs 
+    a file sales_report.txt in the program's folder.  */
+
 #include<iostream>
 #include<iomanip>
 #include<fstream>
@@ -37,9 +43,9 @@ int main()
         cin >> continueLoop;
         cin.ignore();
 
-        outputFile << left << itemName;
-        outputFile << setw(12) << "$" << pricePerUnit << setw(14)
-            << quantitySold << setw(14) << saleQuality << endl;
+        outputFile << left << setw(12) << itemName;
+        outputFile << left << "$" << pricePerUnit << setw(14) << ""
+            << quantitySold << setw(15) << "" << saleQuality << endl;
 
     }
     while(continueLoop == 'y' || continueLoop == 'Y');
@@ -67,7 +73,7 @@ int getIntInput(string msg)
         cout << msg;
         cin >> value;
 
-        validValue = !(value < 1);
+        validValue = (value >= 0);
 
     }
     while (!validValue);
