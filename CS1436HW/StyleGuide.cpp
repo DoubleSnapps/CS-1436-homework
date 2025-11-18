@@ -8,6 +8,9 @@
 
 using namespace std;
 
+// function prototypes dont need parameter names
+int meaningFulName(int);
+
 int main()
 {
 
@@ -49,11 +52,12 @@ int main()
 
 /* A comment that defines the purpose of a function, along with the input parameters and return value */
 
-int meaningfullName(int param) 
+int meaningfulName(int param) 
 {
     int value;
     
     value += param;
+
     //Avoid using multiple return statements
     return value + param;
 
