@@ -11,13 +11,13 @@ void printArray(int[], int);
 int main()
 {
     const int SIZE = 4;
-    int oldArray[SIZE] = {1,56,3,4};
-    int newArray[SIZE] = {0};
+    string months[SIZE] = {"JAN", "FEB", "MAR", "APR"};
 
-    copyArray(oldArray, newArray, SIZE);
+    for(string month : months)
+    {
+        cout << month << endl;
+    }
 
-    printArray(newArray, SIZE);
-    printArray(oldArray, SIZE);
 
 }
 
@@ -34,7 +34,7 @@ void copyArray(int a[], int b[], int size)
 void printArray(int a[], int size)
 {
 
-    cout << endl << "--------------------------" << endl;
+    cout << "--------------------------" << endl;
 
     for(int i = 0; i < size; i++)
     {
