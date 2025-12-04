@@ -1,0 +1,3 @@
+ERROR     Database  ConnectionFailed
+ERROR     Auth      UnauthorizedAccess
+ERROR     Payment   Timeout   

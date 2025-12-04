@@ -1,3 +1,10 @@
+/*  This program finds the average score based 
+    on a collection of scores. It takes an input 
+    of each score from the user, ending with a 
+    sentential value of -999. It outputs the 
+    average score, as well as each score below
+    the average. */
+
 #include <iostream>
 #include <string>
 #include <iomanip>

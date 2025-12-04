@@ -1,22 +1,19 @@
 #include <iostream>
-#include <string>
-#include <iomanip>
-#include <fstream>
 
 using namespace std;
 
 int main()
 {
-    const int LENGTH = 10;
-    int numbers[LENGTH] = {0}, i = 0, j = 0, prevIndex = 0;
+    const int SIZE = 10;
+    int numbers[SIZE] = {0}, i = 0, j = 0, prevIndex = 0;
 
-    for (i = 0; i < LENGTH; i++)
+    for (i = 0; i < SIZE; i++)
     {
         cout << "Enter a Integer Value: ";
         cin >> numbers[i];
     }
 
-    for (i = 0; i < LENGTH; i++)
+    for (i = 0; i < SIZE; i++)
     {
         cout << numbers[i] << " ";
     }
@@ -24,10 +21,10 @@ int main()
     cout << endl;
 
     // sort from smallest [0] - to largest [n-1]
-    for (i = 0; i < LENGTH; i++)
+    for (i = 0; i < SIZE; i++)
     {
         // j starts at the index after i, to check the next index value
-        for (j = i + 1; j < LENGTH; j++)
+        for (j = i + 1; j < SIZE; j++)
         {
             // if index i (preceding) is greater than j, then we place j behind i, as j comes first
             if (numbers[i] > numbers[j])
@@ -43,7 +40,7 @@ int main()
     }
 
     cout << "The smallest number is " << numbers[0] << endl;
-    cout << "The largest number is " << numbers[(LENGTH - 1)] << endl;
+    cout << "The largest number is " << numbers[(SIZE - 1)] << endl;
 
     return 0;
 

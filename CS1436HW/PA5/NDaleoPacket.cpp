@@ -5,60 +5,76 @@
 
 using namespace std;
 
-const int LENGTH = 6;
+string findPacketSize(int);
+int findPacketTypeIndex(string);
+void writeFileReport(const string[], const int[], const string[]);
+bool validateFile(ifstream &, string);
 
+const int SIZE = 6;
 
 int main()
 {
 
-
-    int packetID[LENGTH] = {0}, packetSize[LENGTH] = {0};
-    string packetType[LENGTH] = {0}, packetSizeCat[LENGTH] = {0};
-
-    string ifName = "packet.txt", ofName = "packet_report.txt";
-    int i, tcpCount, udpCount, icmpCount;
+    int packetSize[SIZE] = {0}, typeCount[3] = {0}, i, spacing = 10;
+    string packetID[SIZE], packetType[SIZE], ofName = "packet_report.txt", ifName = "packet.txt";
 
     ifstream inputFile;
     ofstream outputFile;
 
-    i = tcpCount = udpCount = icmpCount = 0;
-
     inputFile.open(ifName);
 
-    if (validateFile(inputFile, ifName))
+    if (inputFile)
     {
 
         // get data from each line
-        for (i = 0; i < LENGTH; i++)
+        for (i = 0; i < SIZE; i++)
         {
             inputFile >> packetID[i];
             inputFile >> packetSize[i];
             inputFile >> packetType[i];
         }
 
-        // determine if each packet is small, medium, or large
-        for (i = 0; i < LENGTH; i++)
-        {
-
-            if (packetSize[i] > 1500)
-            {
-                packetSizeCat[i] = "Large";
-            }
-            else if (packetSize[i] < 500)
-            {
-                packetSizeCat[i] = "Short";
-            }
-            else
-            {
-                packetSizeCat[i] = "Medium";
-            }
-
-        }
-
+        inputFile.close();
 
         outputFile.open(ofName);
 
         if (outputFile)
+        {
+
+            // print packet report header
+
+            outputFile << left;
+            outputFile << setw(spacing) << "PacketID";
+            outputFile << setw(spacing) << "Type";
+            outputFile << setw(spacing) << "SizeCategory";
+            outputFile << endl;
+
+            for (i = 0; i < SIZE; i++)
+            {
+
+                // increment count of type 
+                typeCount[findPacketTypeIndex(packetType[i])]++;
+
+                // add packet info to report
+
+                outputFile << setw(spacing) << packetID[i];
+                outputFile << setw(spacing) << packetType[i];
+                outputFile << setw(spacing) << findPacketSize(packetSize[i]);
+                outputFile << endl;
+            }
+
+            // output type summary
+            outputFile << endl << "Summary:" << endl;
+            outputFile << "TCP: " << typeCount[0] << endl;
+            outputFile << "UDP: " << typeCount[1] << endl;
+            outputFile << "ICMP: " << typeCount[2] << endl;
+
+            outputFile.close();
+        }
+        else
+        {
+            cout << "Error: Output file not opened." << endl;
+        }
     }
     else
     {
@@ -91,25 +107,43 @@ bool validateFile(ifstream &inputFile, string fName)
 }
 
 /*  */
-void determinePacketSize(int packetSize[LENGTH], int &packetSizeCat[LENGTH])
+int findPacketTypeIndex(string packetType)
 {
-for (int i = 0; i < LENGTH; i++)
-        {
+    int sizeIndex = 0;
 
-            if (packetSize[i] > 1500)
-            {
-                packetSizeCat[i] = "Large";
-            }
-            else if (packetSize[i] < 500)
-            {
-                packetSizeCat[i] = "Short";
-            }
-            else
-            {
-                packetSizeCat[i] = "Medium";
-            }
+    if (packetType == "ICMP")
+    {
+        sizeIndex = 2;
+    }
+    else if (packetType == "UDP")
+    {
+        sizeIndex = 1;
+    }
+    else if (packetType == "TCP")
+    {
+        sizeIndex = 0;
+    }
 
-        }
+    return sizeIndex;
+}
 
+/*  */
+string findPacketSize(int packetSize)
+{
+    string sizeCategory = "\0";
 
+    if (packetSize > 1500)
+    {
+        sizeCategory = "Large";
+    }
+    else if (packetSize < 500)
+    {
+        sizeCategory = "Short";
+    }
+    else
+    {
+        sizeCategory = "Medium";
+    }
+
+    return sizeCategory;
 }

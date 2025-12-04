@@ -1,0 +1,12 @@
+PacketID  Type      SizeCategory
+P001      TCP       Short     
+P002      UDP       Medium    
+P003      TCP       Large     
+P004      ICMP      Short     
+P005      TCP       Medium    
+P006      UDP       Short     
+
+Summary:
+TCP:3                                                           
+UDP:2  
+ICMP:1  
