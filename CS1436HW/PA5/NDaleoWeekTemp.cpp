@@ -1,15 +1,30 @@
+/*  This function generates a weekly weather report. It takes an 
+    input of temperature in fahrenheit from the user. It outputs 
+    a formatted weekly weather report, with the temperature for 
+    each day, weekly average, and weekly high and low. I went a 
+    little overboard with the functions. sorry  */
+
 #include <iostream>
 #include <string>
 #include <iomanip>
 
 using namespace std;
 
-double getValidTemp(string day);
+// General Array Functions
 void copyArray(const double[], double[], int);
 double findLowestElement(const double[], int);
 double findHighestElement(const double[], int);
 void sortArray(double[], int);
+int findIndexAtValue(const double[], double, int);
+
+// Weather Functions
+double getValidTemp(string day);
+void printWeeklyTempReport(const double[], int, int);
+void printTempHighLow(string, string, double, double, int);
+
+// Misc Functions
 void printLine(int);
+
 
 const int SIZE = 7;
 const string days[SIZE] = {"Mon", "Tues", "Wednes", "Thurs", "Fri", "Satur", "Sun"};
@@ -17,26 +32,62 @@ const string days[SIZE] = {"Mon", "Tues", "Wednes", "Thurs", "Fri", "Satur", "Su
 int main()
 {
 
-    double temperatures[SIZE] = {0}, averageTemp;
-    int i, lowestDay, highestDay, spacing = 10;
+    double temperatures[SIZE] = {0}, low, high;
+    int i, spacing = 15;
+    string lowestDay, highestDay;
+
+    // user input
 
     for(i = 0; i < SIZE; i++)
     {
         temperatures[i] = getValidTemp(days[i]);
     }
 
+    // calculation
 
-    printWeeklyTempReport(temperatures, spacing, SIZE);
+    // get weekly high and low
+    low = findLowestElement(temperatures, SIZE);
+    high = findHighestElement(temperatures, SIZE);
 
+    // find days which weekly high and low occurred
+    lowestDay = days[findIndexAtValue(temperatures, low, SIZE)];
+    highestDay = days[findIndexAtValue(temperatures, high, SIZE)];
 
+    // print weather reports
 
+    printWeeklyTempReport(temperatures, SIZE, spacing);
+
+    printTempHighLow(highestDay, lowestDay, high, low, spacing);
+
+    return 0;
 
 }
 
-void printWeeklyTempReport(const double temperatures[], int spacing, int size)
+/*  This function prints a report for the highest and lowest temperature of a given week.
+    Requires: prefix of day with weekly high (string)
+    Requires: prefix of day with weekly low (string)
+    Requires: weekly high in fahrenheit (double)
+    Requires: weekly low in fahrenheit (double)
+    Requires: line spacing (int)    */
+void printTempHighLow(string highDay, string lowDay, double highTemp, double lowTemp, int spacing)
+{
+    cout << left;
+    cout << setw(spacing) << "Weekly High" << setw(spacing) << "Weekly Low" << endl;
+    cout << setw(spacing) << (highDay + "day") << setw(spacing) << (lowDay + "day") << endl;
+    cout << setw(spacing) << highTemp << setw(spacing) << lowTemp;
+    cout << endl;
+}
+
+/*  This function prints the weekly temperature
+    report, along with the average.
+    Requires: the week's temperatures (const double array)
+    Requires: # of elements in array (int)
+    Requires: line spacing (int) */
+void printWeeklyTempReport(const double temperatures[], int size, int spacing)
 {
 
     int i;
+    double weeklyAverage = 0;
 
     cout << left << endl;
 
@@ -58,9 +109,16 @@ void printWeeklyTempReport(const double temperatures[], int spacing, int size)
 
     printLine(66);
 
-    cout << setw(spacing) << "Weekly High" << setw(2 * spacing) << "Weekly Low";
+    for(i = 0; i < size; i++)
+    {
+        weeklyAverage += temperatures[i];
+    }
 
+    weeklyAverage /= size;
 
+    cout << "Weekly Average: " << weeklyAverage << endl;
+
+    printLine(66);
 
 }
 
@@ -101,6 +159,29 @@ double getValidTemp(string day)
 
     return temp;
     
+}
+
+/*  This function finds the last instance 
+    of a given value in an array, and returns
+    said value's index.
+    Requires: array to search (const double array)
+    Requires: value to search for (double)
+    Requires: # of elements in array (int)  */
+int findIndexAtValue(const double array[], double searchValue, int size)
+{
+
+    bool equal = false;
+    int originalIndex = 0, i = 0;
+
+    for (i = 0; (!equal && i < size); i++)
+    {
+        equal = array[i] == searchValue;
+    }
+
+    originalIndex = i - 1;
+
+    return originalIndex;
+
 }
 
 /*  This function copys the copy array to the paste array.
@@ -160,7 +241,6 @@ double findHighestElement(const double array[], int size)
 
     return highest;
 }
-
 
 /*  This function sorts an array from least to
     greatest, least 0th, greatest last. The
