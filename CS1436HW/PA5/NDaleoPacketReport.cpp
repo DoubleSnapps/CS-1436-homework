@@ -7,8 +7,6 @@ using namespace std;
 
 string findPacketSize(int);
 int findPacketTypeIndex(string);
-void writeFileReport(const string[], const int[], const string[]);
-bool validateFile(ifstream &, string);
 
 const int SIZE = 6;
 
@@ -84,29 +82,9 @@ int main()
     return 0;
 }
 
-/*  This function validates that a read file
-    is not empty. File should not be open
-    before function is called.
-    Requires: input file (ifstream, pass by reference)
-    Returns: if the file is not empty (bool)*/
-bool validateFile(ifstream &inputFile, string fName)
-{
-    bool notEmpty = false;
-    string str = "\0";
-
-    inputFile.open(fName);
-
-    if (inputFile && getline(inputFile, str))
-    {
-        notEmpty = true;
-    }
-
-    inputFile.close();
-
-    return notEmpty;
-}
-
-/*  */
+/*  This function converts a packet type to index of the typeCount[] array.
+    Requires: packet type (string)
+    Returns: 0-2 index 0 = TCP, 1 = TDP, 2 = ICMP (int)*/
 int findPacketTypeIndex(string packetType)
 {
     int sizeIndex = 0;
@@ -127,7 +105,10 @@ int findPacketTypeIndex(string packetType)
     return sizeIndex;
 }
 
-/*  */
+/*  This function categorizes a packet's 
+    size in bytes as small, medium, or large.
+    Requires: packet size in bytes (int)
+    Returns: packet size category (string)  */
 string findPacketSize(int packetSize)
 {
     string sizeCategory = "\0";
@@ -138,7 +119,7 @@ string findPacketSize(int packetSize)
     }
     else if (packetSize < 500)
     {
-        sizeCategory = "Short";
+        sizeCategory = "Small";
     }
     else
     {

@@ -18,14 +18,8 @@ int main()
     // user input
     for (i = 0; i < SIZE; i++)
     {
-        cout << "Enter a Integer Value: ";
+        cout << "Enter a Integer Value #" << (i + 1) << ": ";
         cin >> numbers[i];
-    }
-
-    // print each number in array
-    for (i = 0; i < SIZE; i++)
-    {
-        cout << numbers[i] << " ";
     }
 
     cout << endl;
