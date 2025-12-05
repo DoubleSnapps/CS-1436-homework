@@ -139,9 +139,9 @@ void printLine(int length)
 
 /*  This function gets a valid fahrenheit 
     value from the user. It loops until a 
-    value valid is entered. 
+    value valid is entered [-50.0-150.0]. 
     Requires: prefix of day of the week (string)
-    Returns: fahrenheit temperature value from [-50, 150] (double)  */
+    Returns: fahrenheit temperature value from [-50.0-150.0] (double)  */
 double getValidTemp(string day)
 {
     double temp;
