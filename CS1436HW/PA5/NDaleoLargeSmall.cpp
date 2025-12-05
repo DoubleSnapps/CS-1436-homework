@@ -1,3 +1,11 @@
+/*  This function displays the lowest 
+    and highest numbers within an array. 
+    It takes an input of 10 numbers from 
+    the user, stored in an array. It then 
+    sorts the array from least to greatest 
+    and outputs the lowest and highest value 
+    entered by the user within the array.   */
+
 #include <iostream>
 
 using namespace std;
@@ -7,12 +15,14 @@ int main()
     const int SIZE = 10;
     int numbers[SIZE] = {0}, i = 0, j = 0, prevIndex = 0;
 
+    // user input
     for (i = 0; i < SIZE; i++)
     {
         cout << "Enter a Integer Value: ";
         cin >> numbers[i];
     }
 
+    // print each number in array
     for (i = 0; i < SIZE; i++)
     {
         cout << numbers[i] << " ";

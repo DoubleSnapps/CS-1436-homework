@@ -1,3 +1,10 @@
+/*  This function sorts through a system log to extract 
+    errors. It takes an input of a "System.log" file, 
+    with 3 strings per line, denoting severity level, 
+    module, and message. It outputs a SystemErrors log 
+    file that contains ERROR level severity messages from 
+    the input file. */
+
 #include <iostream>
 #include <string>
 #include <iomanip>
