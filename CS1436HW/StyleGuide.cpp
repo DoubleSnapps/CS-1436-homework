@@ -11,6 +11,8 @@ using namespace std;
 // function prototypes dont need parameter names
 int meaningFulName(int);
 
+const int CONSTANT = 4;
+
 int main()
 {
 
