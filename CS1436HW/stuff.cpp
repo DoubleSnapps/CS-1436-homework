@@ -21,6 +21,7 @@ int main()
 
 }
 
+
 void copyArray(int a[], int b[], int size)
 {
 

@@ -1,11 +1,3 @@
-/*  This function finds the lowest, highest,
-    total, and average of a set of numbers gathered 
-    from a file. It takes an input of file name from 
-    the user, the file should have 1 number per line. 
-    It outputs the lowest and highest number in the file, 
-    as well as the total of all numbers, and the average 
-    number of the file.  */
-
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -26,9 +18,12 @@ int findLinesInFile(string);
 int main()
 {
 
-    int size = 1, i;
+    const int SIZE = 100;
+    int i;
     double lowest, highest, average, total = 0;
     string ifName = "numbers.txt";
+
+    double numbers[SIZE] = {0};
 
     ifstream inputFile;
 
@@ -37,29 +32,25 @@ int main()
     cin >> ifName;
     cout << endl;
 
-    // find # of lines in file
-    size = findLinesInFile(ifName);
-
     // open after finding lines, as not to open the same file twice and cause issues
     inputFile.open(ifName);
 
     // we divide by 0, so we want to make sure the file is open, and size != 0
-    if (inputFile && size)
+    if (inputFile)
     {
 
         // create number array with size of lines in file
-        double numbers[size];
 
-        for (i = 0; i < size; i++)
+        for (i = 0; i < SIZE; i++)
         {
             inputFile >> numbers[i];
             total += numbers[i];
         }
 
-        average = total / size;
+        average = total / SIZE;
 
-        lowest = findLowestElement(numbers, size);
-        highest = findHighestElement(numbers, size);
+        lowest = findLowestElement(numbers, SIZE);
+        highest = findHighestElement(numbers, SIZE);
 
         // result output
 
@@ -78,6 +69,61 @@ int main()
     return 0;
 }
 
+void printArray(const double array[], int size)
+{
+    for(int i = 0; i < size; size++)
+    {
+        cout << array[i] << " ";
+    }
+    
+    cout << endl;
+
+}
+
+void setArrayFromFile(double array[], int size, string fName)
+{
+
+    int i;
+    double lowest, highest, average, total = 0;
+
+    ifstream inputFile;
+   
+    // open after finding lines, as not to open the same file twice and cause issues
+    inputFile.open(fName);
+
+    // we divide by 0, so we want to make sure the file is open, and size != 0
+    if (inputFile)
+    {
+
+        // create number array with size of lines in file
+
+        for (i = 0; i < size; i++)
+        {
+            inputFile >> array[i];
+            total += array[i];
+        }
+
+        average = total / size;
+
+        lowest = findLowestElement(array, size);
+        highest = findHighestElement(array, size);
+
+        // result output
+
+        cout << "Lowest Number is: " << lowest << endl;
+        cout << "Highest Number is: " << highest << endl;
+        cout << "Total of numbers is: " << total << endl;
+        cout << "Average of number is: " << average << endl;
+
+        inputFile.close();
+    }
+    else
+    {
+        cout << "Error: File was could not be opened or was empty;" << endl;
+    }
+
+}
+
 /*  This function finds the number of lines in a file.
     Requires: file name (string)
     Returns: # of lines (int)   */
@@ -89,7 +135,7 @@ int findLinesInFile(string ifName)
 
     inputFile.open(ifName);
 
-    while (getline(inputFile, str))
+    while (inputFile >> str)
     {
         lines++;
     }
